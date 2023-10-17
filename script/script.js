@@ -1,37 +1,74 @@
 class Calculadora {
     constructor(){
-        this.operacao;
-        this.visor;
-        this.status;
-    }
-
-    lerValores(valorDigitado) {
-
+        this.operacao = [];
+        this.visor = window.document.getElementById("visorInfo");
+        this.status = "desligado";
     }
 }
+    ligarCalculadora(); {
+        this.status = "ligado"
+        this.operacao = []
+        this.ligarVisor() 
+    
+    }
+    ligarVisor ();{
+        this.visor.innerText = "0"
 
-const calculadora = new Calculadora
+        setInterval(()=>{
+            this.visor.style.display = "none";
+            setTimeout(() => {
+                this.visor.style.display = "flex"
+            }, 100)
+        }, 1000)
+    }
 
-const listaDeNumers = Array.from(document.getElementsByClassName('numeros'))
+    lerValores(valorDigitado); {
+        if(this.estatus === "desligado"){
+            console.error(this.status)
+        }else{
+            this.operacao.push(valorDigitado)
+        }
+    
+    this.exibeValoresDigitados(this.operacao.join(""))
+    
+    }
 
-listaDeNumeros.map((element) => {
-    element.addEventListener('click', (event) =>{
-    // Aqui estamos chamando a função que lê o valor dentro da calculadora
-      calculadora.lerValores(event.target.value)
+    exibeValoresDigitados (valor); {
+
+        if(String(valor).length < 9){
+            this.visor.innerText = valor;
+        } else {
+            this.visor.innerText = String(valor).slice(0,8)+"...";
+        }
+    }
+    
+    handleOperacoes();{
+        let result = eval(this.operacao.join(""));
+
+        this.exibeValoresDigitados(result)
+        this.operacao = [ result ]
+    }
+
+    apagaUltimoDigito();{
+        this.operacao.pop()
+
+    this.exibeValoresDigitados(this.operacao.join(""))
+    }
+
+    var calculadora = new calculadora
+
+    const listaDeNumeros = Array.from(document.getElementsByClassName('numeros'))
+
+    listaDeNumeros.map((element) =>{
+        element.addEventListener('click', (event) => {
+            calculadora.lerValores(event,target,value)
+        })
     })
-})
 
-lerValores(valorDigitado) {
-    this.operacao.push(valorDigitado);
+    const listaOperadores = Array.from(document.getElementsByClassName('operadores'))
 
-    this.visor.innerText = this.operacao.join("");
-}
-
-
-handleOperacoes() {
-    let resultado = eval( this.operacao.join(""))
-
-    this.visor.innerText = resultado;~
-
-    this.operacao = [ result ]
-}
+    listaOperadores.map((element) => {
+        element.addEventListener('click', (event) => {
+            calculadora.lerValores(event,target,value)
+        })
+    })
