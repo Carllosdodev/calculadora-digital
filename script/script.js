@@ -26,7 +26,7 @@ lerValores(valorDigitado) {
 
     this.visor.innerText = this.operacao.join("");
 }
-}
+
 
 handleOperacoes() {
     let resultado = eval( this.operacao.join(""))
