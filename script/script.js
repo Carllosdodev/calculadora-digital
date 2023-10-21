@@ -2,11 +2,12 @@ class Calculadora {
     constructor(){
         this.operacao = [];
         this.visor = window.document.getElementById("visorInfo");
-        this.status = "desligado";
+        this.status = 
     }
 }
     ligarCalculadora(); {
-        this.status = "ligado"
+        
+        this.status = status;
         this.operacao = []
         this.ligarVisor() 
     
